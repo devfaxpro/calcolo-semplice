@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="it" data-theme="blue">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f1f6ff"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Calcolo semplice</title><link rel="stylesheet" href="style.css">
+  <script defer src="strings.js"></script><script defer src="extra-strings.js"></script><script defer src="math.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+  <header><div class="topline"><div class="brand"><span class="mark" aria-hidden="true">=</span><span data-t="appName">Calcolo semplice</span></div><select id="language" aria-label="Lingua"><option dir="auto" value="id">Bahasa Indonesia</option><option dir="auto" value="ms">Bahasa Melayu</option><option dir="auto" value="ca">Català</option><option dir="auto" value="cs">Čeština</option><option dir="auto" value="da">Dansk</option><option dir="auto" value="de">Deutsch</option><option dir="auto" value="en">English</option><option dir="auto" value="es">Español</option><option dir="auto" value="fr">Français</option><option dir="auto" value="hr">Hrvatski</option><option dir="auto" value="it">Italiano</option><option dir="auto" value="sw">Kiswahili</option><option dir="auto" value="lt">Lietuvių</option><option dir="auto" value="hu">Magyar</option><option dir="auto" value="nl">Nederlands</option><option dir="auto" value="nb">Norsk bokmål</option><option dir="auto" value="pl">Polski</option><option dir="auto" value="pt-BR">Português (Brasil)</option><option dir="auto" value="ro">Română</option><option dir="auto" value="sk">Slovenčina</option><option dir="auto" value="sl">Slovenščina</option><option dir="auto" value="fi">Suomi</option><option dir="auto" value="sv">Svenska</option><option dir="auto" value="vi">Tiếng Việt</option><option dir="auto" value="tr">Türkçe</option><option dir="auto" value="el">Ελληνικά</option><option dir="auto" value="bg">Български</option><option dir="auto" value="ru">Русский</option><option dir="auto" value="sr">Српски</option><option dir="auto" value="uk">Українська</option><option dir="auto" value="he">עברית</option><option dir="auto" value="ur">اردو</option><option dir="auto" value="ar">العربية</option><option dir="auto" value="fa">فارسی</option><option dir="auto" value="hi">हिन्दी</option><option dir="auto" value="bn">বাংলা</option><option dir="auto" value="th">ไทย</option><option dir="auto" value="ko">한국어</option><option dir="auto" value="ja">日本語</option><option dir="auto" value="zh-Hans">简体中文</option></select></div><div class="toolbar"><div class="theme-control"><label for="theme" data-t="theme">Tema</label><select id="theme" data-label="theme"><option value="blue" data-t="themeBlue">Blu</option><option value="pink" data-t="themePink">Rosa</option></select></div><button id="history-open" class="history-button"><span aria-hidden="true">◷</span> <span data-t="history">Cronologia</span> <span id="history-count" class="count">0</span></button></div></header>
+  <main>
+    <div id="tools-view">
+      <nav class="tabs" aria-label="Calcoli" id="tools-tabs"><button data-page="calculator" aria-pressed="true" data-t="calculator">Calcolatrice</button><button data-page="discount" aria-pressed="false" data-t="discountTab">Sconto</button><button data-page="proportion" aria-pressed="false" data-t="proportions">Proporzioni</button></nav>
+      <section id="calculator-page">
+        <div class="intro"><h1 data-t="calculator">Calcolatrice</h1><p data-t="calculatorIntro"></p></div>
+        <div class="card calculator-card"><form id="calculator-form" novalidate>
+          <label for="expression" data-t="expression"></label><input id="expression" type="text" inputmode="none" maxlength="120" placeholder="0" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="calculator-help">
+          <p class="hint" id="calculator-help" data-t="calculatorHint"></p>
+          <div id="calculator-result" class="calculator-result" aria-live="polite" hidden><output id="calculator-total" class="large"></output><p id="calculator-exact" class="math small"></p><p id="calculator-approx" class="hint" data-t="calculatorApprox" hidden></p><p id="calculator-saved" class="saved"></p></div>
+          <p id="calculator-error" class="error" role="alert" hidden></p>
+          <div class="keypad">
+            <button type="button" data-key="clear" class="utility" data-label="clearInput">C</button><button type="button" data-key="(" class="utility" data-label="openParen">(</button><button type="button" data-key=")" class="utility" data-label="closeParen">)</button><button type="button" data-key="backspace" class="utility" data-label="backspace">⌫</button>
+            <button type="button" data-key="7">7</button><button type="button" data-key="8">8</button><button type="button" data-key="9">9</button><button type="button" data-key="÷" class="operator" data-label="divide">÷</button>
+            <button type="button" data-key="4">4</button><button type="button" data-key="5">5</button><button type="button" data-key="6">6</button><button type="button" data-key="×" class="operator" data-label="multiply">×</button>
+            <button type="button" data-key="1">1</button><button type="button" data-key="2">2</button><button type="button" data-key="3">3</button><button type="button" data-key="−" class="operator" data-label="subtract">−</button>
+            <button type="button" data-key="0">0</button><button type="button" id="decimal-key" data-key="," data-label="decimalKey">,</button><button type="submit" class="equals" data-label="equals">=</button><button type="button" data-key="+" class="operator" data-label="add">+</button>
+          </div>
+        </form></div>
+      </section>
+      <section id="discount-page" hidden>
+        <div class="intro"><h1 data-t="title">Quanto paghi?</h1><p data-t="description"></p></div>
+        <div class="card"><form id="discount-form" novalidate>
+          <label for="amount" data-t="amount"></label><div class="input-wrap"><input id="amount" type="text" inputmode="decimal" maxlength="13" placeholder="100,00" autocomplete="off" aria-describedby="amount-help"><span aria-hidden="true">€</span></div><p id="amount-help" class="hint" data-t="amountHint"></p>
+          <label for="percent" data-t="percent"></label><div class="input-wrap"><input id="percent" type="text" inputmode="decimal" maxlength="6" placeholder="20" autocomplete="off" aria-describedby="percent-help"><span aria-hidden="true">%</span></div><p id="percent-help" class="hint" data-t="percentHint"></p>
+          <p id="discount-error" class="error" role="alert" hidden></p><button type="submit" class="primary" data-t="calculate"></button>
+        </form><div id="discount-result" class="result" aria-live="polite" hidden><span data-t="pay"></span><output id="discount-total" class="large"></output><div class="saving"><span data-t="save"></span><strong id="discount-saving"></strong></div><p id="discount-math" class="math small"></p><p class="saved" id="discount-saved"></p></div></div>
+      </section>
+      <section id="proportion-page" hidden>
+        <div class="intro"><h1 data-t="proportions"></h1><p data-t="proportionIntro"></p></div>
+        <div class="card"><div class="tabs modes" id="modes"><button data-mode="guided" aria-pressed="true" data-t="guided"></button><button data-mode="formula" aria-pressed="false" data-t="formula"></button></div>
+          <form id="proportion-form" novalidate>
+            <div id="guided-fields"><p class="guide-note" data-t="guidedNote"></p>
+              <div class="step"><span class="step-number">1</span><div><label for="guide-a" data-t="guideA"></label><input id="guide-a" type="text" inputmode="decimal" placeholder="2" maxlength="20" autocomplete="off"><p class="hint" data-t="guideAHint"></p></div></div>
+              <div class="step"><span class="step-number">2</span><div><label for="guide-b" data-t="guideB"></label><input id="guide-b" type="text" inputmode="decimal" placeholder="150" maxlength="20" autocomplete="off"><p class="hint" data-t="guideBHint"></p></div></div>
+              <div class="step"><span class="step-number">3</span><div><label for="guide-c" data-t="guideC"></label><input id="guide-c" type="text" inputmode="decimal" placeholder="6" maxlength="20" autocomplete="off"><p class="hint" data-t="guideCHint"></p></div></div>
+              <button id="example" type="button" class="text-button" data-t="example"></button>
+            </div>
+            <div id="formula-fields" hidden><p class="guide-note" data-t="formulaNote"></p><label for="unknown" data-t="unknown"></label><select id="unknown"><option value="0">x : B = C : D</option><option value="1">A : x = C : D</option><option value="2">A : B = x : D</option><option value="3" selected>A : B = C : x</option></select>
+              <div class="formula-grid"><div><label for="term-a">A</label><input id="term-a" type="text" inputmode="decimal" placeholder="2" maxlength="20" autocomplete="off"></div><span>:</span><div><label for="term-b">B</label><input id="term-b" type="text" inputmode="decimal" placeholder="3" maxlength="20" autocomplete="off"></div><span>=</span><div><label for="term-c">C</label><input id="term-c" type="text" inputmode="decimal" placeholder="4" maxlength="20" autocomplete="off"></div><span>:</span><div><label for="term-d">D</label><input id="term-d" type="text" inputmode="decimal" value="x" readonly maxlength="20" autocomplete="off"></div></div>
+              <p class="hint" data-t="numberHint"></p>
+            </div>
+            <p id="proportion-error" class="error" role="alert" hidden></p><button class="primary" type="submit" data-t="solve"></button>
+          </form>
+          <div id="proportion-result" class="result" aria-live="polite" hidden><span data-t="result"></span><output id="proportion-total" class="large"></output><p id="exact" class="math"></p><h2 data-t="calculation"></h2><ol class="calculation"><li><span data-t="cross"></span><div class="math">A × D = B × C</div></li><li><span data-t="findX"></span><div id="symbolic" class="math"></div><div id="numeric" class="math"></div></li><li><span data-t="complete"></span><div id="completed" class="math"></div></li></ol><p id="approx" class="hint" hidden data-t="approx"></p><p id="proportion-saved" class="saved"></p></div>
+        </div>
+      </section>
+      <p class="footer" data-t="footer"></p>
+    </div>
+    <section id="history-view" hidden><button id="history-back" class="text-button">← <span data-t="back"></span></button><div class="intro history-intro"><h1 data-t="history"></h1><p data-t="historyNote"></p></div><div id="history-empty" class="card empty" data-t="historyEmpty"></div><div id="history-list"></div><button id="history-clear" class="secondary" data-t="clearHistory" hidden></button><p id="storage-message" class="error" role="status" hidden></p></section>
+  </main>
+  <dialog id="clear-dialog"><h2 data-t="clearHistory"></h2><p data-t="confirmClear"></p><div class="dialog-buttons"><button id="clear-cancel" class="secondary" data-t="cancel"></button><button id="clear-confirm" class="primary" data-t="delete"></button></div></dialog>
+</body>
+</html>
