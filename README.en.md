@@ -31,6 +31,8 @@ The translations have not yet undergone professional native-speaker review. Corr
 
 ## Data and privacy
 
+[Read the full Privacy Policy](https://devfaxpro.github.io/calcolo-semplice/privacy.html#english) · [Informativa in italiano](https://devfaxpro.github.io/calcolo-semplice/privacy.html#italiano)
+
 History, theme and language are saved only in the app's local storage. The app requires no account or Internet permission and includes no trackers or ads. Uninstalling the app or clearing its data also deletes history and preferences. Browser preview data is separate from Android app data.
 
 ## Support

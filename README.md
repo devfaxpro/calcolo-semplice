@@ -31,6 +31,8 @@ Le traduzioni non hanno ancora ricevuto una revisione professionale madrelingua.
 
 ## Dati e privacy
 
+[Leggi le norme sulla privacy complete](https://devfaxpro.github.io/calcolo-semplice/privacy.html#italiano) · [English privacy policy](https://devfaxpro.github.io/calcolo-semplice/privacy.html#english)
+
 Cronologia, tema e lingua sono salvati solo nella memoria locale dell'app. Non sono richiesti account o permessi Internet e non sono inclusi tracker o annunci. Disinstallare l'app o cancellarne i dati elimina anche cronologia e preferenze. I dati dell'anteprima nel browser sono separati da quelli dell'app Android.
 
 ## Assistenza
